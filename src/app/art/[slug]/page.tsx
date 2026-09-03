@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
@@ -46,18 +45,15 @@ export default async function ArtworkPage({
 
       <section className="mx-auto max-w-6xl px-6 py-12 md:px-10 md:py-20">
         <div className="grid items-center gap-12 lg:grid-cols-[1fr_0.8fr]">
-          <div className="relative aspect-[4/5] overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-[#eadcff] via-[#f8dce9] to-[#dcecff] shadow-[0_30px_80px_rgba(89,61,111,0.12)]">
+          <div className="relative aspect-[4/5] overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-[#eadcff] via-[#f8dce9] to-[#dcecff] shadow-[0_30px_80px_rgba(89,61,111,0.12)] sm:aspect-[4/5]">
             {artwork.image_url ? (
-              <Image
+              <img
                 src={artwork.image_url}
                 alt={artwork.title}
-                fill
-                className="object-cover"
-                priority
-                sizes="(max-width: 1024px) 100vw, 60vw"
+                className="h-full w-full object-cover"
               />
             ) : (
-              <div className="absolute inset-0 flex items-center justify-center">
+              <div className="flex min-h-[320px] w-full items-center justify-center">
                 <div className="text-center">
                   <div className="mb-5 text-6xl opacity-60">✦</div>
                   <p className="text-sm font-medium text-[#756d7f]">

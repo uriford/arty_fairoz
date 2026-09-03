@@ -339,17 +339,15 @@ export default function ArtworkManager({
                 key={artwork.id}
                 className="overflow-hidden rounded-[2rem] border border-white/80 bg-white/65 shadow-[0_20px_60px_rgba(89,61,111,0.08)] backdrop-blur-md"
               >
-                <div className="relative aspect-[4/5] bg-[#eadcff]">
+                <div className="flex min-h-[280px] items-center justify-center bg-[#eadcff] p-4 sm:min-h-[320px]">
                   {artwork.image_url ? (
-                    <Image
+                    <img
                       src={artwork.image_url}
                       alt={artwork.title}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 640px) 100vw, 50vw"
+                      className="block h-auto max-h-[420px] max-w-full w-auto object-contain"
                     />
                   ) : (
-                    <div className="flex h-full items-center justify-center text-[#a66cff]">
+                    <div className="flex min-h-[280px] w-full items-center justify-center text-[#a66cff]">
                       ✦
                     </div>
                   )}

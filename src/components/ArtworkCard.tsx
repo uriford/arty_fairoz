@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import type { Artwork } from "@/types/artwork";
 
@@ -13,17 +12,17 @@ export default function ArtworkCard({ artwork }: ArtworkCardProps) {
       className="art-card group block"
       aria-label={`View ${artwork.title}`}
     >
-      <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] bg-gradient-to-br from-[#eadcff] via-[#f8dce9] to-[#dcecff]">
+      <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-[#eadcff] via-[#f8dce9] to-[#dcecff]">
         {artwork.image_url ? (
-          <Image
-            src={artwork.image_url}
-            alt={artwork.title}
-            fill
-            className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
-            sizes="(max-width: 768px) 100vw, 33vw"
-          />
+          <div className="relative aspect-[4/5] w-full">
+            <img
+              src={artwork.image_url}
+              alt={artwork.title}
+              className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.02]"
+            />
+          </div>
         ) : (
-          <div className="absolute inset-0 flex items-center justify-center">
+          <div className="flex min-h-[280px] items-center justify-center sm:min-h-[360px] lg:min-h-[400px]">
             <div className="text-center">
               <div className="mb-4 text-5xl opacity-60">✦</div>
               <p className="text-sm font-medium text-[#756d7f]">
