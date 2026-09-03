@@ -1,12 +1,13 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useState } from "react";
 import { submitCommission } from "@/app/commissions/actions/submit-commission";
 
 export default function CommissionForm() {
   const [state, formAction, pending] = useActionState(submitCommission, {
     success: false,
   });
+  const [referenceName, setReferenceName] = useState("");
 
   if (state.success) {
     return (
@@ -131,15 +132,20 @@ export default function CommissionForm() {
           htmlFor="reference"
           className="mt-2 flex cursor-pointer flex-col items-center justify-center rounded-2xl border border-dashed border-[#cdbbe0] bg-white/40 px-6 py-10 text-center transition-all hover:border-[#a66cff] hover:bg-white/60"
         >
-          <span className="text-3xl text-[#a66cff]">✦</span>
-
-          <span className="mt-3 text-sm font-medium text-[#4a3e52]">
-            Add a reference image
+          <span className="text-3xl text-[#a66cff]">
+            {referenceName ? "✓" : "✦"}
           </span>
 
-          <span className="mt-1 text-xs text-[#958aa0]">
-            A photo, character reference, pose, or anything that helps explain
-            your idea
+          <span className="mt-3 text-sm font-medium text-[#4a3e52]">
+            {referenceName
+              ? "Reference image added successfully"
+              : "Add a reference image"}
+          </span>
+
+          <span className="mt-1 max-w-md text-xs text-[#958aa0]">
+            {referenceName
+              ? referenceName
+              : "A photo, character reference, pose, or anything that helps explain your idea"}
           </span>
 
           <input
@@ -148,6 +154,9 @@ export default function CommissionForm() {
             type="file"
             accept="image/*"
             className="sr-only"
+            onChange={(event) =>
+              setReferenceName(event.target.files?.[0]?.name ?? "")
+            }
           />
         </label>
       </div>

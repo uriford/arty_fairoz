@@ -285,6 +285,7 @@ export default function CommissionManager({
 function ReferenceImage({ path }: { path: string }) {
   const [url, setUrl] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
+  const [viewerOpen, setViewerOpen] = useState(false);
 
   useEffect(() => {
     let active = true;
@@ -309,6 +310,24 @@ function ReferenceImage({ path }: { path: string }) {
     };
   }, [path]);
 
+  useEffect(() => {
+    if (!viewerOpen) {
+      return;
+    }
+
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") {
+        setViewerOpen(false);
+      }
+    }
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [viewerOpen]);
+
   if (loading) {
     return (
       <div className="flex min-h-40 items-center justify-center rounded-3xl bg-[#f4edf8] px-5 text-center text-sm text-[#958aa0] sm:min-h-48">
@@ -326,14 +345,58 @@ function ReferenceImage({ path }: { path: string }) {
   }
 
   return (
-    <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl bg-[#f4edf8]">
-      <Image
-        src={url}
-        alt="Commission reference"
-        fill
-        className="object-cover"
-        sizes="(max-width: 1024px) 100vw, 40vw"
-      />
-    </div>
+    <>
+      <button
+        type="button"
+        onClick={() => setViewerOpen(true)}
+        className="relative block aspect-[4/3] w-full overflow-hidden rounded-3xl bg-[#f4edf8] text-left"
+        aria-label="Open commission reference image"
+      >
+        <Image
+          src={url}
+          alt="Commission reference"
+          fill
+          className="object-cover transition-transform duration-300 hover:scale-[1.02]"
+          sizes="(max-width: 1024px) 100vw, 40vw"
+        />
+
+        <span className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/45 to-transparent px-4 pb-4 pt-12 text-xs font-medium text-white opacity-0 transition-opacity duration-200 hover:opacity-100">
+          Click to view full image
+        </span>
+      </button>
+
+      {viewerOpen && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 sm:p-6"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Commission reference image viewer"
+          onClick={() => setViewerOpen(false)}
+        >
+          <button
+            type="button"
+            onClick={() => setViewerOpen(false)}
+            className="absolute right-4 top-4 z-10 flex h-11 w-11 items-center justify-center rounded-full bg-white/15 text-2xl text-white backdrop-blur-md transition-colors hover:bg-white/25"
+            aria-label="Close image viewer"
+          >
+            ×
+          </button>
+
+          <div
+            className="relative max-h-[92vh] max-w-[92vw]"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <Image
+              src={url}
+              alt="Commission reference"
+              width={1600}
+              height={1600}
+              className="max-h-[92vh] w-auto max-w-[92vw] rounded-2xl object-contain shadow-2xl"
+              sizes="92vw"
+            />
+          </div>
+        </div>
+      )}
+    </>
   );
 }
