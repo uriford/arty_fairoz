@@ -84,9 +84,12 @@ export default async function AdminPage() {
               Requests from people who want something drawn by Fairoz.
             </p>
 
-            <div className="mt-6 rounded-full bg-[#eadcff] px-5 py-3 text-center text-sm font-medium text-[#6f4ba8]">
-              Coming next
-            </div>
+            <Link
+              href="/admin/commissions"
+              className="mt-6 block rounded-full bg-[#2b2433] px-5 py-3 text-center text-sm font-medium text-white transition-all hover:-translate-y-0.5 hover:shadow-lg"
+            >
+              View commission requests →
+            </Link>
           </div>
         </div>
       </section>

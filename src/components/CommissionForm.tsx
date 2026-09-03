@@ -1,16 +1,14 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { useActionState } from "react";
+import { submitCommission } from "@/app/commissions/actions/submit-commission";
 
 export default function CommissionForm() {
-  const [submitted, setSubmitted] = useState(false);
+  const [state, formAction, pending] = useActionState(submitCommission, {
+    success: false,
+  });
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    setSubmitted(true);
-  }
-
-  if (submitted) {
+  if (state.success) {
     return (
       <div className="py-12 text-center">
         <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-[#eadcff] text-2xl text-[#a66cff]">
@@ -28,7 +26,7 @@ export default function CommissionForm() {
 
         <button
           type="button"
-          onClick={() => setSubmitted(false)}
+          onClick={() => window.location.reload()}
           className="mt-7 rounded-full bg-[#2b2433] px-6 py-3 text-sm font-medium text-white transition-all hover:-translate-y-1 hover:shadow-lg"
         >
           Send another idea
@@ -38,7 +36,7 @@ export default function CommissionForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-8">
+    <form action={formAction} className="space-y-8">
       <div>
         <label
           htmlFor="name"
@@ -175,11 +173,21 @@ export default function CommissionForm() {
       </div>
 
       <div className="border-t border-[#e8deed] pt-7">
+        {state.error && (
+          <p
+            role="alert"
+            className="mb-4 rounded-2xl border border-red-200 bg-red-50 px-5 py-4 text-center text-sm text-red-700"
+          >
+            {state.error}
+          </p>
+        )}
+
         <button
           type="submit"
-          className="w-full rounded-full bg-[#2b2433] px-7 py-4 text-sm font-medium text-white transition-all hover:-translate-y-1 hover:shadow-xl"
+          disabled={pending}
+          className="w-full rounded-full bg-[#2b2433] px-7 py-4 text-sm font-medium text-white transition-all hover:-translate-y-1 hover:shadow-xl disabled:cursor-not-allowed disabled:opacity-60"
         >
-          Send commission request ✦
+          {pending ? "Sending your idea..." : "Send commission request ✦"}
         </button>
 
         <p className="mt-4 text-center text-xs leading-5 text-[#958aa0]">
