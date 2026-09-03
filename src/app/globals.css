@@ -23,6 +23,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: clip;
 }
 
 body {
@@ -43,6 +44,7 @@ body {
 .art-background {
   position: relative;
   isolation: isolate;
+  overflow-x: clip;
 }
 
 .art-background::before,

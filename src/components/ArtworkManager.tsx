@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { FormEvent, useState } from "react";
 import { createClient } from "@/lib/supabase/client";
 
@@ -178,13 +177,13 @@ export default function ArtworkManager({
   }
 
   return (
-    <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
-      <div className="h-fit rounded-[2.5rem] border border-white/80 bg-white/65 p-7 shadow-[0_25px_70px_rgba(89,61,111,0.08)] backdrop-blur-md md:p-9">
+    <div className="grid gap-8 xl:grid-cols-[0.8fr_1.2fr] xl:gap-10">
+      <div className="h-fit rounded-[2rem] border border-white/80 bg-white/65 p-5 shadow-[0_25px_70px_rgba(89,61,111,0.08)] sm:rounded-[2.5rem] sm:p-7 backdrop-blur-md md:p-9">
         <p className="text-sm uppercase tracking-[0.18em] text-[#a66cff]">
           New piece
         </p>
 
-        <h2 className="mt-3 text-3xl font-semibold tracking-tight text-[#2b2433]">
+        <h2 className="mt-3 text-2xl font-semibold tracking-tight sm:text-3xl text-[#2b2433]">
           Add artwork
         </h2>
 
@@ -314,14 +313,14 @@ export default function ArtworkManager({
               Gallery library
             </p>
 
-            <h2 className="mt-2 text-3xl font-semibold tracking-tight text-[#2b2433]">
+            <h2 className="mt-2 text-2xl font-semibold tracking-tight sm:text-3xl text-[#2b2433]">
               {artworks.length} {artworks.length === 1 ? "piece" : "pieces"}
             </h2>
           </div>
         </div>
 
         {artworks.length === 0 ? (
-          <div className="rounded-[2.5rem] border border-dashed border-[#cdbbe0] bg-white/40 px-7 py-20 text-center">
+          <div className="rounded-[2rem] border border-dashed border-[#cdbbe0] bg-white/40 px-5 py-14 sm:rounded-[2.5rem] sm:px-7 sm:py-20 text-center">
             <div className="text-4xl text-[#a66cff]">✦</div>
 
             <h3 className="mt-4 text-xl font-semibold text-[#2b2433]">
@@ -333,27 +332,27 @@ export default function ArtworkManager({
             </p>
           </div>
         ) : (
-          <div className="grid gap-5 sm:grid-cols-2">
+          <div className="grid gap-4 md:grid-cols-2">
             {artworks.map((artwork) => (
               <article
                 key={artwork.id}
                 className="overflow-hidden rounded-[2rem] border border-white/80 bg-white/65 shadow-[0_20px_60px_rgba(89,61,111,0.08)] backdrop-blur-md"
               >
-                <div className="flex min-h-[280px] items-center justify-center bg-[#eadcff] p-4 sm:min-h-[320px]">
+                <div className="relative aspect-[4/5] w-full overflow-hidden bg-[#eadcff]">
                   {artwork.image_url ? (
                     <img
                       src={artwork.image_url}
                       alt={artwork.title}
-                      className="block h-auto max-h-[420px] max-w-full w-auto object-contain"
+                      className="h-full w-full object-cover"
                     />
                   ) : (
-                    <div className="flex min-h-[280px] w-full items-center justify-center text-[#a66cff]">
+                    <div className="flex h-full w-full items-center justify-center text-[#a66cff]">
                       ✦
                     </div>
                   )}
                 </div>
 
-                <div className="p-5">
+                <div className="p-4 sm:p-5">
                   <div className="flex items-start justify-between gap-3">
                     <div>
                       <p className="text-xs uppercase tracking-[0.15em] text-[#a66cff]">

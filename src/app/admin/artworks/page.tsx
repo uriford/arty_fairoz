@@ -31,7 +31,7 @@ export default async function AdminArtworksPage() {
 
   return (
     <main className="art-background min-h-screen">
-      <nav className="relative z-10 mx-auto flex max-w-7xl items-center justify-between px-6 py-7 md:px-10">
+      <nav className="relative z-10 mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-5 sm:px-6 sm:py-7 md:px-10">
         <Link
           href="/"
           className="text-xl font-semibold tracking-tight text-[#302638]"
@@ -39,7 +39,7 @@ export default async function AdminArtworksPage() {
           arty<span className="text-[#a66cff]">.</span>
         </Link>
 
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-3 sm:gap-6">
           <Link
             href="/admin"
             className="text-sm text-[#756d7f] transition-colors hover:text-[#302638]"
@@ -51,14 +51,14 @@ export default async function AdminArtworksPage() {
         </div>
       </nav>
 
-      <section className="mx-auto max-w-7xl px-6 pb-24 pt-12 md:px-10 md:pt-16">
+      <section className="mx-auto max-w-7xl px-4 pb-20 pt-10 sm:px-6 sm:pb-24 sm:pt-12 md:px-10 md:pt-16">
         <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <div>
             <p className="text-sm uppercase tracking-[0.2em] text-[#a66cff]">
               Artist studio
             </p>
 
-            <h1 className="mt-4 text-5xl font-semibold tracking-tight text-[#2b2433] md:text-6xl">
+            <h1 className="mt-4 text-4xl font-semibold tracking-tight text-[#2b2433] sm:text-5xl md:text-6xl">
               Her artwork.
             </h1>
 

@@ -119,7 +119,7 @@ export default function CommissionManager({
 
   if (commissions.length === 0) {
     return (
-      <div className="rounded-[2.5rem] border border-white/80 bg-white/65 px-7 py-16 text-center shadow-[0_25px_70px_rgba(89,61,111,0.08)] backdrop-blur-md">
+      <div className="rounded-[2rem] border border-white/80 bg-white/65 px-5 py-12 text-center sm:rounded-[2.5rem] sm:px-7 sm:py-16 shadow-[0_25px_70px_rgba(89,61,111,0.08)] backdrop-blur-md">
         <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-[#eadcff] text-2xl text-[#a66cff]">
           ✦
         </div>
@@ -153,19 +153,19 @@ export default function CommissionManager({
         return (
           <article
             key={commission.id}
-            className="overflow-hidden rounded-[2.5rem] border border-white/80 bg-white/65 shadow-[0_25px_70px_rgba(89,61,111,0.08)] backdrop-blur-md"
+            className="overflow-hidden rounded-[2rem] border border-white/80 bg-white/65 shadow-[0_25px_70px_rgba(89,61,111,0.08)] backdrop-blur-md sm:rounded-[2.5rem]"
           >
             <button
               type="button"
               onClick={() =>
                 setSelectedId(selected ? null : commission.id)
               }
-              className="w-full px-7 py-6 text-left transition-colors hover:bg-white/40 md:px-9"
+              className="w-full px-5 py-5 text-left transition-colors hover:bg-white/40 sm:px-7 sm:py-6 md:px-9"
             >
-              <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
+              <div className="flex min-w-0 flex-col gap-4 sm:gap-5 md:flex-row md:items-center md:justify-between">
                 <div>
-                  <div className="flex flex-wrap items-center gap-3">
-                    <h2 className="text-xl font-semibold text-[#2b2433]">
+                  <div className="flex min-w-0 flex-wrap items-center gap-2.5 sm:gap-3">
+                    <h2 className="min-w-0 break-words text-lg font-semibold text-[#2b2433] sm:text-xl">
                       {commission.name}
                     </h2>
 
@@ -180,7 +180,7 @@ export default function CommissionManager({
                   </p>
                 </div>
 
-                <div className="flex items-center gap-4 text-sm text-[#958aa0]">
+                <div className="flex w-full min-w-0 items-center justify-between gap-3 text-xs text-[#958aa0] sm:w-auto sm:justify-end sm:text-sm">
                   <span>{formatDate(commission.created_at)}</span>
                   <span className="text-lg text-[#a66cff]">
                     {selected ? "−" : "+"}
@@ -190,8 +190,8 @@ export default function CommissionManager({
             </button>
 
             {selected && (
-              <div className="border-t border-[#e8deed] px-7 py-7 md:px-9">
-                <div className="grid gap-8 lg:grid-cols-[1fr_0.8fr]">
+              <div className="border-t border-[#e8deed] px-5 py-6 sm:px-7 sm:py-7 md:px-9">
+                <div className="grid min-w-0 gap-6 sm:gap-8 lg:grid-cols-[1fr_0.8fr]">
                   <div>
                     <p className="text-xs uppercase tracking-[0.18em] text-[#a66cff]">
                       Commission idea
@@ -201,7 +201,7 @@ export default function CommissionManager({
                       {commission.description}
                     </p>
 
-                    <div className="mt-8 grid gap-5 sm:grid-cols-2">
+                    <div className="mt-7 grid gap-5 sm:mt-8 sm:grid-cols-2">
                       <div>
                         <p className="text-xs uppercase tracking-[0.15em] text-[#958aa0]">
                           Contact
@@ -235,7 +235,7 @@ export default function CommissionManager({
                   </div>
                 </div>
 
-                <div className="mt-8 flex flex-col gap-4 border-t border-[#e8deed] pt-7 md:flex-row md:items-center md:justify-between">
+                <div className="mt-7 flex flex-col gap-5 border-t border-[#e8deed] pt-6 sm:mt-8 sm:pt-7 md:flex-row md:items-center md:justify-between">
                   <div>
                     <label
                       htmlFor={`status-${commission.id}`}
@@ -254,7 +254,7 @@ export default function CommissionManager({
                           event.target.value as CommissionStatus,
                         )
                       }
-                      className="mt-2 block rounded-full border border-[#dfd3e8] bg-white/70 px-4 py-2.5 text-sm text-[#302638] outline-none focus:border-[#b995e8] focus:ring-4 focus:ring-[#eadcff]/60 disabled:opacity-60"
+                      className="mt-2 block w-full rounded-2xl border border-[#dfd3e8] bg-white/70 px-4 py-2.5 text-sm sm:w-auto sm:rounded-full text-[#302638] outline-none focus:border-[#b995e8] focus:ring-4 focus:ring-[#eadcff]/60 disabled:opacity-60"
                     >
                       {statuses.map((status) => (
                         <option key={status} value={status}>
@@ -268,7 +268,7 @@ export default function CommissionManager({
                     type="button"
                     disabled={loading}
                     onClick={() => handleDelete(commission)}
-                    className="rounded-full border border-red-200 px-5 py-2.5 text-sm font-medium text-red-600 transition-colors hover:bg-red-50 disabled:cursor-not-allowed disabled:opacity-50"
+                    className="w-full rounded-full border border-red-200 px-5 py-2.5 text-sm font-medium sm:w-auto text-red-600 transition-colors hover:bg-red-50 disabled:cursor-not-allowed disabled:opacity-50"
                   >
                     {loading ? "Working..." : "Delete request"}
                   </button>
@@ -311,7 +311,7 @@ function ReferenceImage({ path }: { path: string }) {
 
   if (loading) {
     return (
-      <div className="flex min-h-48 items-center justify-center rounded-3xl bg-[#f4edf8] text-sm text-[#958aa0]">
+      <div className="flex min-h-40 items-center justify-center rounded-3xl bg-[#f4edf8] px-5 text-center text-sm text-[#958aa0] sm:min-h-48">
         Loading reference...
       </div>
     );
@@ -319,14 +319,14 @@ function ReferenceImage({ path }: { path: string }) {
 
   if (!url) {
     return (
-      <div className="flex min-h-48 items-center justify-center rounded-3xl border border-red-200 bg-red-50 px-6 text-center text-sm text-red-700">
+      <div className="flex min-h-40 items-center justify-center rounded-3xl border border-red-200 bg-red-50 px-5 text-center text-sm text-red-700 sm:min-h-48">
         Could not load the reference image.
       </div>
     );
   }
 
   return (
-    <div className="relative aspect-[4/3] overflow-hidden rounded-3xl bg-[#f4edf8]">
+    <div className="relative aspect-[4/3] w-full overflow-hidden rounded-3xl bg-[#f4edf8]">
       <Image
         src={url}
         alt="Commission reference"

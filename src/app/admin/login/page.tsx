@@ -2,7 +2,7 @@ import LoginForm from "@/components/LoginForm";
 
 export default function AdminLoginPage() {
   return (
-    <main className="art-background flex min-h-screen items-center justify-center px-6 py-12">
+    <main className="art-background flex min-h-screen items-center justify-center px-4 py-8 sm:px-6 sm:py-12">
       <div className="w-full max-w-md">
         <div className="mb-8 text-center">
           <a
@@ -16,7 +16,7 @@ export default function AdminLoginPage() {
             Artist studio
           </p>
 
-          <h1 className="mt-3 text-4xl font-semibold tracking-tight text-[#2b2433]">
+          <h1 className="mt-3 text-3xl font-semibold tracking-tight text-[#2b2433] sm:text-4xl">
             Welcome back.
           </h1>
 

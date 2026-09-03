@@ -32,7 +32,7 @@ export default async function Home() {
       </div>
 
       {/* Navigation */}
-      <nav className="relative z-10 mx-auto flex max-w-7xl items-center justify-between px-6 py-7 md:px-10">
+      <nav className="relative z-10 mx-auto flex max-w-7xl items-center justify-between px-4 py-5 sm:px-6 sm:py-7 md:px-10">
         <a
           href="#"
           className="text-xl font-semibold tracking-tight text-[#302638]"
@@ -67,14 +67,14 @@ export default async function Home() {
       </nav>
 
       {/* Hero */}
-      <section className="relative mx-auto flex min-h-[78vh] max-w-7xl items-center px-6 py-20 md:px-10">
-        <div className="grid w-full items-center gap-16 lg:grid-cols-[1fr_0.9fr]">
+      <section className="relative mx-auto flex min-h-[78vh] max-w-7xl items-center px-4 py-12 sm:px-6 sm:py-16 md:px-10 md:py-20">
+        <div className="grid w-full items-center gap-10 md:gap-12 lg:grid-cols-[1fr_0.9fr] lg:gap-16">
           <div>
             <p className="reveal mb-5 text-sm font-medium uppercase tracking-[0.25em] text-[#a66cff]">
               Artist • Illustrator
             </p>
 
-            <h1 className="reveal reveal-delay-1 max-w-3xl text-6xl font-semibold leading-[0.95] tracking-[-0.05em] text-[#2b2433] sm:text-7xl lg:text-8xl">
+            <h1 className="reveal reveal-delay-1 max-w-3xl text-4xl font-semibold leading-[0.98] tracking-[-0.04em] text-[#2b2433] sm:text-7xl sm:leading-[0.95] sm:tracking-[-0.05em] lg:text-8xl">
               A little world
               <br />
               drawn by <span className="text-[#a66cff]">Fairoz.</span>
@@ -126,13 +126,13 @@ export default async function Home() {
       </section>
 
       {/* Art */}
-      <section id="art" className="mx-auto max-w-7xl px-6 py-24 md:px-10">
+      <section id="art" className="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-20 md:px-10 md:py-24">
         <div className="mb-12 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
           <div>
             <p className="mb-3 text-sm uppercase tracking-[0.2em] text-[#a66cff]">
               Selected work
             </p>
-            <h2 className="text-4xl font-semibold tracking-tight text-[#2b2433] md:text-5xl">
+            <h2 className="text-3xl font-semibold tracking-tight text-[#2b2433] sm:text-4xl md:text-5xl">
               From imagination,
               <br />
               onto the canvas.
@@ -155,14 +155,14 @@ export default async function Home() {
       {/* Commission */}
       <section
         id="commissions"
-        className="mx-6 my-12 overflow-hidden rounded-[2.5rem] bg-[#302638] px-7 py-20 text-white md:mx-10 md:px-16"
+        className="mx-4 my-10 overflow-hidden sm:mx-6 sm:my-12 md:mx-10 rounded-[2.5rem] bg-[#302638] px-5 py-14 text-white sm:px-7 sm:py-16 md:px-16 md:py-20"
       >
         <div className="mx-auto max-w-4xl text-center">
           <p className="text-sm uppercase tracking-[0.2em] text-[#d9c5ff]">
             Commissions
           </p>
 
-          <h2 className="mt-5 text-4xl font-semibold tracking-tight md:text-6xl">
+          <h2 className="mt-5 text-3xl font-semibold tracking-tight sm:text-4xl md:text-6xl">
             Have a character
             <br />
             in your mind?
@@ -183,7 +183,7 @@ export default async function Home() {
       </section>
 
       {/* About */}
-      <section id="about" className="mx-auto max-w-3xl px-6 py-24 text-center">
+      <section id="about" className="mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-20 md:py-24 text-center">
         <p className="text-sm uppercase tracking-[0.2em] text-[#a66cff]">
           About the artist
         </p>
@@ -200,7 +200,7 @@ export default async function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-[#e8deed] px-6 py-10 md:px-10">
+      <footer className="border-t border-[#e8deed] px-4 py-8 sm:px-6 sm:py-10 md:px-10">
         <div className="mx-auto flex max-w-7xl flex-col gap-4 text-sm text-[#756d7f] sm:flex-row sm:items-center sm:justify-between">
           <p>
             made with imagination<span className="text-[#a66cff]"> ✦</span>
