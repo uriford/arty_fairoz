@@ -197,6 +197,10 @@ export default async function Home() {
           characters, people, imagination, and everything that catches her
           creative eye.
         </p>
+
+        <p className="mt-4 text-sm italic text-[#958aa0]">
+          Looks innocent. Turns out, appearances can be misleading.
+        </p>
       </section>
 
       {/* Footer */}
