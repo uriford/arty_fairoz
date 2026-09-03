@@ -1,0 +1,202 @@
+@import "tailwindcss";
+
+:root {
+  --background: #fbf7ff;
+  --foreground: #25202d;
+  --muted: #756d7f;
+  --accent: #a66cff;
+  --accent-soft: #eadcff;
+  --pink: #f6b8d8;
+  --cream: #fff8ed;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--accent-soft);
+  color: var(--foreground);
+}
+
+/* ---------- Ambient background ---------- */
+
+.art-background {
+  position: relative;
+  isolation: isolate;
+}
+
+.art-background::before,
+.art-background::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  z-index: -1;
+  border-radius: 9999px;
+  filter: blur(70px);
+  opacity: 0.45;
+}
+
+.art-background::before {
+  width: 420px;
+  height: 420px;
+  top: 80px;
+  left: -180px;
+  background: var(--pink);
+  animation: drift 12s ease-in-out infinite;
+}
+
+.art-background::after {
+  width: 500px;
+  height: 500px;
+  top: 300px;
+  right: -220px;
+  background: var(--accent-soft);
+  animation: drift-reverse 15s ease-in-out infinite;
+}
+
+/* ---------- Floating decorations ---------- */
+
+.float-slow {
+  animation: float-slow 7s ease-in-out infinite;
+}
+
+.float-reverse {
+  animation: float-reverse 9s ease-in-out infinite;
+}
+
+.twinkle {
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+@keyframes drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(70px, 40px, 0);
+  }
+}
+
+@keyframes drift-reverse {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(-60px, -30px, 0);
+  }
+}
+
+@keyframes float-slow {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-14px) rotate(4deg);
+  }
+}
+
+@keyframes float-reverse {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(12px) rotate(-5deg);
+  }
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(0.85);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+}
+
+/* ---------- Hero entrance ---------- */
+
+.reveal {
+  animation: reveal 900ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.reveal-delay-1 {
+  animation-delay: 120ms;
+}
+
+.reveal-delay-2 {
+  animation-delay: 240ms;
+}
+
+.reveal-delay-3 {
+  animation-delay: 360ms;
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---------- Artwork hover ---------- */
+
+.art-card {
+  transition:
+    transform 500ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 500ms ease;
+}
+
+.art-card:hover {
+  transform: translateY(-8px) rotate(0.5deg);
+  box-shadow: 0 24px 60px rgba(89, 61, 111, 0.12);
+}
+
+/* ---------- Reduced motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
