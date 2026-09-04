@@ -15,6 +15,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Arty Fairoz — Artist",
   description: "The art world of Fairoz.",
+  icons: {
+    icon: "/icon.png",
+  },
 };
 
 export default function RootLayout({
